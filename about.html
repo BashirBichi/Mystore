@@ -1,0 +1,146 @@
+<!-- About Us Page (about.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./font/bootstrap-icons.min.css">
+    <title>About Us - Your E-Commerce Website</title>
+</head>
+<body>
+
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Store</a>
+            <button class="btn btn-light" onclick="openCart()">Cart</button>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <h2 class="text-center" id="About-Us">About Us</h2>
+
+        <!-- Company Overview Section -->
+        <section id="Company-Overview">
+            <h3>Company Overview</h3>
+            <p class="p1">
+                Your Company is dedicated to providing high-quality products and excellent service to our customers.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo ac urna aliquet feugiat.
+                Fusce vel est nec justo luctus fermentum.
+            </p>
+        </section>
+
+        <!-- Our Team Section -->
+        <section class="Our-Team" id="Our-Team">
+            <h3 class="h3">Our Team</h3>
+            <div class="row">
+                <!-- Team Member Card 1 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/me.jpg" class="card-img-top" alt="Team Member 1">
+                        <div class="card-body">
+                            <h5 class="card-title">Bashir Abbas Bichi</h5>
+                            <p class="card-text">Co-founder and CEO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Team Member Card 2 -->
+                <div class="col-md-4">
+                    <div class="card">
+                        <img src="images/imm.jpg" class="card-img-top" alt="Team Member 2">
+                        <div class="card-body">
+                            <h5 class="card-title">Jane Smith</h5>
+                            <p class="card-text">Co-founder and CTO</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Add more team member cards as needed -->
+            </div>
+        </section>
+
+        <!-- Our Mission Section -->
+        <section class="Our-Mission" id="Our-Mission">
+            <h3>Our Mission</h3>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed eget justo ac urna aliquet feugiat.
+                Fusce vel est nec justo luctus fermentum. Sed ut maximus metus.
+            </p>
+
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet eligendi iure necessitatibus laudantium reprehenderit sequi odit?
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nulla corrupti et nemo eaque quod distinctio? Ipsa voluptates architecto dignissimos molestiae! Error ducimus saepe, unde vitae inventore voluptatem obcaecati laudantium tempora.
+        </section>
+    </div>
+
+    <!-- Shopping Cart Modal (similar to the one in the previous examples) -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+</body>
+ <!-- Footer navigation -->
+ <footer class="bg-dark text-light mt-4">
+    <div class="container">
+        <div class="row">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <h5>Category 1</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop/Store</a></li>
+                    <li><a href="#">Product Categories</a></li>
+                    <li><a href="product details.html">Product Details</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h5>Category 2</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="#">Order History/Tracking</a></li>
+                    <li><a href="./Login.html">Account Login/sign up</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h5>Category 3</h5>
+                <ul class="list-unstyled">
+                    <li><a href="about.html">About Us </a></li>
+                    <li><a href="contact.html">Contact Us/a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <!-- Add more links as needed -->
+                    
+                </ul>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h5>Connect with Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" target="_blank"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <!-- Add more social media links as needed -->
+                </ul>
+                <h5>Subscribe</h5>
+                <p>Subscribe with your email to get updates and offers:</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
