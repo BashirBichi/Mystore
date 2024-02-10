@@ -1,0 +1,101 @@
+header{
+
+}
+ /* Add styles for the loader container */
+ #loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+/* Add styles for the cart icon */
+.cart-icon {
+    font-size: 40px;
+    color: #3498db;
+    animation: moveCart 1s linear infinite;
+}
+
+/* Add keyframes for the cart icon movement */
+@keyframes moveCart {
+    0% { transform: translateX(0); }
+    50% { transform: translateX(50px); }
+    100% { transform: translateX(0); }
+}
+body{
+
+}
+.navbar{
+
+}
+.navbar-brand{
+
+}
+#navbarNav{
+
+}
+.nav-item{
+
+}
+.nav-link{
+
+}
+.container #Featured-items-section{
+    padding: 20px;
+    margin: 5px;
+}
+.card .card-body{
+
+}
+#Carousel-section{
+
+}
+.carousel-slide #carouselGrains
+.carousel-slide #carouselLegumes
+.carousel-slide #carouselSeeds
+.carousel-slide #carouselOils{
+
+}
+#about-us{
+
+}
+footer{
+    font-size: medium;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* About Us Page  */
+#About-Us{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#Company-Overview{
+    padding: 50px;
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#Our-Team{
+    padding: 50px;
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#Our-Team .h3 .card-title .card-text{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+#Our-Team .card{
+    padding: 20px;
+}
+#Our-Mission{
+    padding: 50px;
+    font-size: medium;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+/* FAQS Page */
+#FAQs #h2{
+    font-family: Georgia, 'Times New Roman', Times, serif;   
+}
