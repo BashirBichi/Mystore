@@ -1,0 +1,141 @@
+<!-- Contact Us Page (contact.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./font/bootstrap-icons.min.css">
+    <title>Contact Us - Your E-Commerce Website</title>
+</head>
+<body>
+
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Store</a>
+            <button class="btn btn-light" onclick="openCart()">Cart</button>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <h2>Contact Us</h2>
+
+        <!-- Contact Form Section -->
+        <section>
+            <h3>Send Us a Message</h3>
+            <form id="contactForm" onsubmit="return submitContactForm()" action="" method="post">
+                <div class="form-group">
+                    <label for="contactName">Your Name</label>
+                    <input type="text" name="contactName" class="form-control" id="contactName" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Your Email</label>
+                    <input type="email" name="contactEmail" class="form-control" id="contactEmail" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Your Message</label>
+                    <textarea class="form-control" name="contactMessage" id="contactMessage" rows="4" placeholder="Type your message here" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Send Message</button>
+            </form>
+        </section>
+
+        <!-- Other Contact Information Section -->
+        <section class="mt-4">
+            <h3>Other Ways to Reach Us</h3>
+            <p>Email: info@ourstore.com</p>
+            <p>Phone: +234 9035009031</p>
+            <p>Address: No2 Babban Gwarza Street</p>
+        </section>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="./bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+   
+<script>
+    function submitContactForm() {
+        // Get form inputs
+        const name = document.getElementById('contactName').value;
+        const email = document.getElementById('contactEmail').value;
+        const message = document.getElementById('contactMessage').value;
+
+        // Validate inputs 
+        if (!name || !email || !message) {
+            alert('Please fill in all fields');
+            return false;
+        }
+
+        // Simulate form submission (in a real-world scenario, this would involve backend processing)
+        alert(`Message sent successfully!\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`);
+        return true;
+    }
+</script>
+
+</body>
+ <!-- Footer navigation -->
+ <footer class="bg-dark text-light mt-4">
+    <div class="container">
+        <div class="row">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <h5>Category 1</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop/Store</a></li>
+                    <li><a href="#">Product Categories</a></li>
+                    <li><a href="product details.html">Product Details</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h5>Category 2</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="#">Order History/Tracking</a></li>
+                    <li><a href="#">Account Login/sign up</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h5>Category 3</h5>
+                <ul class="list-unstyled">
+                    <li><a href="about.html">About Us </a></li>
+                    <li><a href="contact.html">Contact Us/a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <!-- Add more links as needed -->
+                    
+                </ul>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h5>Connect with Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" target="_blank"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <!-- Add more social media links as needed -->
+                </ul>
+                <h5>Subscribe</h5>
+                <p>Subscribe with your email to get updates and offers:</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>

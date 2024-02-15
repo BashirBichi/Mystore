@@ -1,0 +1,235 @@
+<!-- Checkout Page (checkout.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./font/bootstrap-icons.min.css">
+    <title>Checkout - Your E-Commerce Website</title>
+</head>
+<style>
+   
+
+body {
+    font-family: 'Helvetica', sans-serif;
+}
+
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+h2, h3 {
+    color: #007bff;
+    font-family: 'Arial', sans-serif;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+textarea {
+    resize: none;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+</style>
+<body>
+
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Store</a>
+            <button class="btn btn-light" onclick="openCart()">Cart</button>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <h2>Checkout</h2>
+        <form id="checkoutForm" method="POST" action="{{ url_for('checkout') }}">
+
+            <!-- Shipping Information -->
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" required></textarea>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="city">City</label>
+                    <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="zipCode">ZIP Code</label>
+                    <input type="text" class="form-control" id="zipCode" placeholder="Enter your ZIP code" required>
+                </div>
+            </div>
+
+            <!-- Payment Information -->
+            <h3 class="mt-4">Payment Information</h3>
+            <div class="form-group">
+                <label for="creditCard">Credit Card Number</label>
+                <input type="text" class="form-control" id="creditCard" placeholder="Enter your credit card number" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="expiryDate">Expiry Date</label>
+                    <input type="text" class="form-control" id="expiryDate" placeholder="MM/YYYY" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="cvv">CVV</label>
+                    <input type="text" class="form-control" id="cvv" placeholder="Enter CVV" required>
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-primary" onclick="placeOrder()">Place Order</button>
+        </form>
+    </div>
+
+    
+
+    <!-- Shopping Cart Modal (similar to the one in the previous examples) -->
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <!-- Add this section at the end of your script.js file -->
+<script>
+    function placeOrder() {
+        // Get form inputs
+        const fullName = document.getElementById('fullName').value;
+        const address = document.getElementById('address').value;
+        const city = document.getElementById('city').value;
+        const zipCode = document.getElementById('zipCode').value;
+        const creditCard = document.getElementById('creditCard').value;
+        const expiryDate = document.getElementById('expiryDate').value;
+        const cvv = document.getElementById('cvv').value;
+
+        // Validate form inputs (you may implement more comprehensive validation)
+        if (!fullName || !address || !city || !zipCode || !creditCard || !expiryDate || !cvv) {
+            alert('Please fill in all fields');
+            return;
+        }
+
+        // Simulate order placement (in a real-world scenario, this would involve backend processing)
+        const orderSummary = {
+            fullName,
+            address,
+            city,
+            zipCode,
+            creditCard,
+            expiryDate,
+            cvv,
+            cart, // Assuming you have a global cart variable
+        };
+
+        // Display order confirmation (customize this part based on your design)
+        const confirmationMessage = `
+            Order Placed Successfully!
+            Order Summary:
+            Full Name: ${orderSummary.fullName}
+            Address: ${orderSummary.address}
+            City: ${orderSummary.city}
+            ZIP Code: ${orderSummary.zipCode}
+            Credit Card: ${orderSummary.creditCard}
+            Expiry Date: ${orderSummary.expiryDate}
+            Total Items: ${orderSummary.cart.length}
+        `;
+
+        alert(confirmationMessage);
+
+        // Clear the cart and redirect to a thank you page (customize the redirect URL)
+        cart = [];
+        updateCartModal(); // Clear the cart modal
+        window.location.href = 'thank-you.html';
+    }
+</script>
+
+</body>
+ <!-- Footer navigation -->
+ <footer class="bg-dark text-light mt-4">
+    <div class="container">
+        <div class="row">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <h5>Category 1</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop/Store</a></li>
+                    <li><a href="#">Product Categories</a></li>
+                    <li><a href="product details.html">Product Details</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h5>Category 2</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="#">Order History/Tracking</a></li>
+                    <li><a href="#">Account Login/sign up</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h5>Category 3</h5>
+                <ul class="list-unstyled">
+                    <li><a href="about.html">About Us </a></li>
+                    <li><a href="contact.html">Contact Us/a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <!-- Add more links as needed -->
+                    
+                </ul>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h5>Connect with Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" target="_blank"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <!-- Add more social media links as needed -->
+                </ul>
+                <h5>Subscribe</h5>
+                <p>Subscribe with your email to get updates and offers:</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>

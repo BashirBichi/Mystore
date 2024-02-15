@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <title>Language and Currency Selector</title>
+</head>
+<style>
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+#h2 {
+    color: #007bff;
+}
+
+#h3 {
+    color: #0056b3;
+}
+
+.accordion {
+    margin-top: 20px;
+}
+
+.card {
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    margin-bottom: 10px;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+}
+
+.card-body {
+    padding: 15px;
+}
+
+.btn-link {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.btn-link:hover {
+    text-decoration: underline;
+}
+</style>
+<body>
+
+
+    <div class="container mt-4">
+        <h2>Language and Currency Selector</h2>
+
+        <!-- Language Selector -->
+        <section class="mt-4">
+            <h3>Select Language</h3>
+            <select class="form-control">
+                <option value="english">English</option>
+                <option value="spanish">Spanish</option>
+                <option value="french">French</option>
+                <!-- Add more languages as needed -->
+            </select>
+        </section>
+
+        <!-- Currency Selector -->
+        <section class="mt-4">
+            <h3>Select Currency</h3>
+            <select class="form-control">
+                <option value="usd">USD - United States Dollar</option>
+                <option value="eur">EUR - Euro</option>
+                <option value="gbp">GBP - British Pound</option>
+                <!-- Add more currencies as needed -->
+            </select>
+        </section>
+
+        <!-- Apply Button -->
+        <button class="btn btn-primary mt-4">Apply Changes</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

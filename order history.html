@@ -1,0 +1,206 @@
+<!-- Order History/Tracking Page (order-history.html) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="./bootstrap.min.css">
+    <link rel="stylesheet" href="./font/bootstrap-icons.min.css">
+    <title>Order History - Your E-Commerce Website</title>
+</head>
+<body>
+
+    <header class="navbar navbar-dark bg-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">Your Store</a>
+            <button class="btn btn-light" onclick="openCart()">Cart</button>
+        </div>
+    </header>
+
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+        }
+
+        h2 {
+            color: #007bff;
+        }
+
+        .order-card {
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            padding: 20px;
+        }
+
+        .order-status {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        .order-details {
+            margin-top: 10px;
+        }
+
+        .tracking-info {
+            background-color: #f8f9fa;
+            padding: 15px;
+            margin-top: 20px;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+        }
+
+        .tracking-status {
+            font-weight: bold;
+        }
+    </style>
+    <title>Order History/Tracking</title>
+</head>
+<body>
+
+    <div class="container">
+        <h2>Order History/Tracking</h2>
+
+        <!-- Order 1 -->
+        <div class="order-card">
+            <div class="order-status">Order Shipped</div>
+            <div class="order-details">
+                <p>Order ID: #123456</p>
+                <p>Date: January 15, 2024</p>
+                <p>Total Amount: $50.00</p>
+            </div>
+            <div class="tracking-info">
+                <div class="tracking-status">Tracking Information:</div>
+                <p>Carrier: UPS</p>
+                <p>Tracking Number: 1234567890</p>
+            </div>
+        </div>
+
+        <!-- Order 2 -->
+        <div class="order-card">
+            <div class="order-status">Order Delivered</div>
+            <div class="order-details">
+                <p>Order ID: #789012</p>
+                <p>Date: February 10, 2024</p>
+                <p>Total Amount: $75.50</p>
+            </div>
+            <div class="tracking-info">
+                <div class="tracking-status">Tracking Information:</div>
+                <p>Carrier: FedEx</p>
+                <p>Tracking Number: 9876543210</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="script.js"></script>
+    <!-- Add this section at the end of your script.js file -->
+<script>
+    // Sample order history data (replace this with actual data fetched from the server)
+    const orderHistoryData = [
+        { orderId: '1', date: '2022-01-15', totalItems: 3, totalAmount: 50.00, status: 'Shipped' },
+        { orderId: '2', date: '2022-02-20', totalItems: 2, totalAmount: 30.00, status: 'Delivered' },
+        // Add more order history items as needed
+    ];
+
+    function initializeOrderHistory() {
+        const orderHistoryContainer = document.getElementById('orderHistory');
+
+        // Check if there is order history data
+        if (orderHistoryData.length === 0) {
+            orderHistoryContainer.innerHTML = '<p>No order history available.</p>';
+            return;
+        }
+
+        orderHistoryData.forEach(order => {
+            const orderItem = document.createElement('div');
+            orderItem.className = 'card mb-3';
+            orderItem.innerHTML = `
+                <div class="card-body">
+                    <h5 class="card-title">Order #${order.orderId}</h5>
+                    <p class="card-text">Date: ${order.date}</p>
+                    <p class="card-text">Total Items: ${order.totalItems}</p>
+                    <p class="card-text">Total Amount: $${order.totalAmount.toFixed(2)}</p>
+                    <p class="card-text">Status: ${order.status}</p>
+                </div>
+            `;
+            orderHistoryContainer.appendChild(orderItem);
+        });
+    }
+
+    // Initialize the order history when the page loads
+    document.addEventListener('DOMContentLoaded', initializeOrderHistory);
+</script>
+
+</body>
+ <!-- Footer navigation -->
+ <footer class="bg-dark text-light mt-4">
+    <div class="container">
+        <div class="row">
+            <!-- Column 1 -->
+            <div class="col-md-3">
+                <h5>Category 1</h5>
+                <ul class="list-unstyled">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop/Store</a></li>
+                    <li><a href="#">Product Categories</a></li>
+                    <li><a href="product details.html">Product Details</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 2 -->
+            <div class="col-md-3">
+                <h5>Category 2</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#">Cart</a></li>
+                    <li><a href="checkout.html">Checkout</a></li>
+                    <li><a href="#">Order History/Tracking</a></li>
+                    <li><a href="#">Account Login/sign up</a></li>
+                    <!-- Add more links as needed -->
+                </ul>
+            </div>
+            <!-- Column 3 -->
+            <div class="col-md-3">
+                <h5>Category 3</h5>
+                <ul class="list-unstyled">
+                    <li><a href="about.html">About Us </a></li>
+                    <li><a href="contact.html">Contact Us/a></li>
+                    <li><a href="faqs.html">FAQs</a></li>
+                    <li><a href="terms.html">Terms and Conditions</a></li>
+                    <!-- Add more links as needed -->
+                    
+                </ul>
+            </div>
+
+            <!-- Column 4 -->
+            <div class="col-md-3">
+                <h5>Connect with Us</h5>
+                <ul class="list-unstyled">
+                    <li><a href="#" target="_blank"><i class="bi bi-facebook"></i> Facebook</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-twitter"></i> Twitter</a></li>
+                    <li><a href="#" target="_blank"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    <!-- Add more social media links as needed -->
+                </ul>
+                <h5>Subscribe</h5>
+                <p>Subscribe with your email to get updates and offers:</p>
+                <form>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Your Email" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</footer>
+</html>
