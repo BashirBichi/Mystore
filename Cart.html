@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for cart styling -->
+    <style>
+        /* General Styling */
+        body {
+            background-color: #f7f8fa;
+            font-family: 'Arial', sans-serif;
+        }
+        /* Header */
+        header {
+            background-color: #007bff;
+            padding: 20px;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+        }
+
+        .cart-container {
+            margin-top: 50px;
+        }
+        /* Back to Shop Button */
+        .back-to-shop {
+            background-color: #6c757d;
+            color: #fff;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .back-to-shop:hover {
+            background-color: #5a6268;
+        }
+        /* Cart Card */
+        .cart-card {
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .cart-item {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .cart-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Bold Product Name, Price and Quantity */
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #007bff;
+        }
+
+        .product-price, .product-quantity {
+            font-weight: bold;
+            color: #28a745;
+        }
+
+        /* Remove Button */
+        .remove-item {
+            background-color: #dc3545;
+            color: #fff;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .remove-item:hover {
+            background-color: #c82333;
+        }
+
+        /* Checkout Button */
+        #checkout-btn {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            margin: 20px auto; /* Center align */
+            display: block; /* Block for easier alignment */
+            width: fit-content; /* Size reduction */
+        }
+
+        #checkout-btn:hover {
+            background-color: #218838;
+        }
+        .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+        background-color: #007bff;
+        color: #fff;
+        border-bottom: none;
+    }
+
+    .modal-title {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .modal-body {
+        padding: 20px;
+        background-color: #f9f9f9;
+    }
+
+    #invoice-details {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        background-color: #fff;
+        max-height: 400px;
+        overflow-y: auto;
+        margin-bottom: 20px;
+    }
+
+    .invoice-item {
+        display: flex;
+        justify-content: space-between;
+        padding: 8px 0;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .invoice-item:last-child {
+        border-bottom: none;
+    }
+
+    .total-price {
+        font-weight: bold;
+        font-size: 1.25rem;
+        color: #28a745;
+    }
+
+    .modal-footer {
+        border-top: none;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 10px 15px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        border: none;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        border: none;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        border: none;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }    
+
+        /* Footer Color */
+        footer {
+            background-color: #007bff; /* Footer color should remain distinct */
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        /* Padding and margin adjustments for button */
+        .button-wrapper {
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 20px;
+        }
+
+        /* Total Price Section */
+        .total-price {
+            text-align: right;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #28a745;
+        }
+
+        /* Empty Cart Message */
+        .empty-cart-message {
+            text-align: center;
+            margin-top: 50px;
+            color: #888;
+        }
+
+        /* Modal Styling */
+        .modal-header {
+            background-color: #007bff;
+            color: white;
+        }
+        /* Enhanced Checkout modal Styling */
+    body {
+        font-family: 'Helvetica', sans-serif;
+    }
+
+    .modal-content {
+        border-radius: 10px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .modal-header {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .modal-title, h3 {
+        font-size: 1.5rem;
+        font-weight: bold;
+    }
+
+    .modal-body {
+        padding: 20px;
+        background-color: #f8f9fa;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        font-weight: bold;
+        font-size: 16px;
+        color: #007bff;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    .modal-footer {
+        border-top: none;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 10px 20px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: #fff;
+    }
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+    }
+
+    .btn-success {
+        background-color: #28a745;
+        color: #fff;
+    }
+
+    .btn-success:hover {
+        background-color: #218838;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: #fff;
+    }
+
+    .btn-secondary:hover {
+        background-color: #5a6268;
+    }
+    /* Modal Fade In/Out Transitions */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.modal.fade.show .modal-dialog {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.modal.fade .modal-dialog {
+    transform: translateY(-100px);
+    opacity: 0;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>My Shopping Cart</h1>
+    </header>
+
+    <!-- Cart Container -->
+    <div class="container cart-container">
+        <!-- Back to Shop Button -->
+        <div class="mb-4">
+            <a href="index.html" class="btn back-to-shop">
+                <i class="bi bi-arrow-left"></i> Back to Shop
+            </a>
+        </div>
+
+        <div id="cart-items" class="cart-card">
+            <!-- Cart items will be dynamically inserted here -->
+        </div>
+        <div id="empty-cart-message" class="empty-cart-message">
+            <h3>Your cart is empty!</h3>
+            <a href="index.html" class="btn btn-primary mt-3">Go Back to Shop</a>
+        </div>
+
+        <!-- Total Price Section -->
+        <div id="total-price" class="total-price">
+            <!-- Total price will be dynamically updated here -->
+        </div>
+
+        <div class="button-wrapper">
+            <button id="checkout-btn" class="btn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+   <!-- Invoice Modal -->
+<div class="modal fade" id="invoiceModal" tabindex="-1" aria-labelledby="invoiceModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="invoiceModalLabel">Invoice</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div id="invoice-details"></div>
+                <div class="total-price mt-4">
+                    <h4>Total Amount: <strong id="total-invoice-amount" class="text-success"></strong></h4>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="download-invoice-btn">Download Invoice</button>
+                <button type="button" class="btn btn-success" id="proceed-checkout-btn">Proceed to Checkout</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Checkout Modal -->
+<div class="modal fade" id="checkoutModal" tabindex="-1" aria-labelledby="checkoutModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="checkoutModalLabel">Checkout</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <!-- Shipping Information -->
+                    <h3>Shipping Information</h3>
+                    <div class="form-group">
+                        <label for="fullName">Full Name</label>
+                        <input type="text" class="form-control" id="fullName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <textarea class="form-control" id="address" rows="3" placeholder="Enter your address" required></textarea>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="city">City</label>
+                            <input type="text" class="form-control" id="city" placeholder="Enter your city" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="zipCode">ZIP Code</label>
+                            <input type="text" class="form-control" id="zipCode" placeholder="Enter your ZIP code" required>
+                        </div>
+                    </div>
+
+                    <!-- Payment Information -->
+                    <h3 class="mt-4">Payment Information</h3>
+                    <div class="form-group">
+                        <label for="creditCard">Credit Card Number</label>
+                        <input type="text" class="form-control" id="creditCard" placeholder="Enter your credit card number" required>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="expiryDate">Expiry Date</label>
+                            <input type="text" class="form-control" id="expiryDate" placeholder="MM/YYYY" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="cvv">CVV</label>
+                            <input type="text" class="form-control" id="cvv" placeholder="Enter CVV" required>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="placeOrderBtn">Place Order</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Optional Checkout Page (in case you want a full page experience) -->
+<div class="container mt-5" id="checkoutPage" style="display: none;">
+    <h2>Checkout</h2>
+    <form id="checkoutFormPage">
+        <!-- Same form fields as the modal above -->
+        <!-- Add checkout form fields here as shown above -->
+        <button type="button" class="btn btn-primary mt-3" onclick="placeOrder()">Place Order</button>
+    </form>
+</div>
+
+    
+
+    <footer>
+        &copy; 2024 Your Store. All rights reserved.
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript to manage cart -->
+    <script>
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function displayCartItems() {
+            const cartItemsContainer = document.getElementById('cart-items');
+            const emptyCartMessage = document.getElementById('empty-cart-message');
+            cartItemsContainer.innerHTML = '';
+
+            if (cartItems.length === 0) {
+                cartItemsContainer.style.display = 'none';
+                emptyCartMessage.style.display = 'block';
+                document.getElementById('total-price').innerText = ''; // Clear total price
+                return;
+            }
+
+            emptyCartMessage.style.display = 'none';
+            cartItemsContainer.style.display = 'block';
+
+            cartItems.forEach((item, index) => {
+                const cartItemHTML = `
+                    <div class="cart-item d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="product-name"><strong>${item.name}</strong></h5>
+                            <p class="product-price"><strong>Price: $${(item.price * item.quantity).toFixed(2)}</strong></p>
+                            <p class="product-quantity"><strong>Quantity: ${item.quantity}</strong></p>
+                        </div>
+                        <div>
+                            <button class="btn btn-sm btn-primary" onclick="decreaseQuantity(${index})">−</button>
+                            <button class="btn btn-sm btn-primary" onclick="increaseQuantity(${index})">+</button>
+                            <button class="remove-item btn btn-sm btn-danger" data-index="${index}">Remove</button>
+                        </div>
+                    </div>
+                `;
+                cartItemsContainer.innerHTML += cartItemHTML;
+            });
+
+            updateTotalPrice();
+
+            // Add event listeners to all remove buttons
+            const removeButtons = document.querySelectorAll('.remove-item');
+            removeButtons.forEach(button => {
+                button.addEventListener('click', (event) => {
+                    const itemIndex = event.target.getAttribute('data-index');
+                    removeFromCart(itemIndex);
+                });
+            });
+        }
+
+        function updateTotalPrice() {
+            const totalPriceElement = document.getElementById('total-price');
+            let totalPrice = 0;
+
+            cartItems.forEach(item => {
+                totalPrice += item.price * item.quantity;
+            });
+
+            totalPriceElement.innerText = `Total Price: $${totalPrice.toFixed(2)}`;
+        }
+
+        function increaseQuantity(index) {
+            cartItems[index].quantity++;
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            displayCartItems();
+        }
+
+        function decreaseQuantity(index) {
+            if (cartItems[index].quantity > 1) {
+                cartItems[index].quantity--;
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+                displayCartItems();
+            } else {
+                removeFromCart(index);
+            }
+        }
+
+        function removeFromCart(index) {
+            cartItems.splice(index, 1);
+            localStorage.setItem('cart', JSON.stringify(cartItems));
+            displayCartItems();
+        }
+
+        document.getElementById('checkout-btn').addEventListener('click', () => {
+            if (cartItems.length === 0) {
+                alert('Your cart is empty! Add items to proceed.');
+                return;
+            }
+            // Prepare the invoice details
+            displayInvoice();
+            // Show the invoice modal
+            const invoiceModal = new bootstrap.Modal(document.getElementById('invoiceModal'));
+            invoiceModal.show();
+        });
+
+        function displayInvoice() {
+            const invoiceDetailsElement = document.getElementById('invoice-details');
+            const totalInvoiceAmountElement = document.getElementById('total-invoice-amount');
+            invoiceDetailsElement.innerHTML = '';
+            let totalInvoiceAmount = 0;
+
+            cartItems.forEach(item => {
+                const itemTotal = item.price * item.quantity;
+                totalInvoiceAmount += itemTotal;
+                invoiceDetailsElement.innerHTML += `
+                    <div class="d-flex justify-content-between">
+                        <span>${item.name} (${item.quantity})</span>
+                        <span>$${itemTotal.toFixed(2)}</span>
+                    </div>
+                `;
+            });
+
+            totalInvoiceAmountElement.innerText = `Total Amount: $${totalInvoiceAmount.toFixed(2)}`;
+        }
+
+        // Download invoice functionality
+        document.getElementById('download-invoice-btn').addEventListener('click', () => {
+            const invoiceText = `Invoice\n\n${cartItems.map(item => `${item.name} (${item.quantity}): $${(item.price * item.quantity).toFixed(2)}`).join('\n')}\n\nTotal: $${calculateTotalPrice().toFixed(2)}`;
+            const blob = new Blob([invoiceText], { type: 'text/plain' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'invoice.txt';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+
+        // Proceed to checkout functionality
+        document.getElementById('proceed-checkout-btn').addEventListener('click', () => {
+            alert('Proceeding to the checkout page...');
+            // Here you can implement the redirection to the actual checkout page if necessary
+        });
+
+        function calculateTotalPrice() {
+            return cartItems.reduce((total, item) => total + (item.price * item.quantity), 0);
+        }
+
+        // Initial display of cart items
+        displayCartItems();
+
+        // Function to handle proceeding to checkout
+document.getElementById('proceed-checkout-btn').addEventListener('click', function() {
+    // Hide the invoice modal and show the checkout modal
+    $('#invoiceModal').modal('hide');
+    $('#checkoutModal').modal('show');
+});
+
+// Function to place order
+function placeOrder() {
+    // Get form inputs
+    const fullName = document.getElementById('fullName').value;
+    const address = document.getElementById('address').value;
+    const city = document.getElementById('city').value;
+    const zipCode = document.getElementById('zipCode').value;
+    const creditCard = document.getElementById('creditCard').value;
+    const expiryDate = document.getElementById('expiryDate').value;
+    const cvv = document.getElementById('cvv').value;
+
+    // Validate form inputs (basic validation)
+    if (!fullName || !address || !city || !zipCode || !creditCard || !expiryDate || !cvv) {
+        alert('Please fill in all fields');
+        return;
+    }
+
+    // Simulate order placement (backend API call should go here)
+    const orderSummary = {
+        fullName,
+        address,
+        city,
+        zipCode,
+        creditCard,
+        expiryDate,
+        cvv
+    };
+
+    alert(`Order placed successfully for ${fullName}!`);
+
+    // Clear the cart (this should be your actual cart clearing logic)
+    cart = [];
+    updateCartModal(); // Clear the cart modal
+
+    // Close the modal and redirect to a thank-you page
+    $('#checkoutModal').modal('hide');
+    window.location.href = 'thank-you.html';
+}
+// Prepare the invoice details when proceeding to checkout
+document.getElementById('checkout-btn').addEventListener('click', () => {
+    if (cartItems.length === 0) {
+        alert('Your cart is empty! Add items to proceed.');
+        return;
+    }
+    // Prepare the invoice details
+    displayInvoice();
+    // Show the invoice modal
+    const invoiceModal = new bootstrap.Modal(document.getElementById('invoiceModal'));
+    invoiceModal.show();
+});
+
+// Function to display invoice details in the modal
+function displayInvoice() {
+    const invoiceDetailsElement = document.getElementById('invoice-details');
+    const totalInvoiceAmountElement = document.getElementById('total-invoice-amount');
+    invoiceDetailsElement.innerHTML = '';
+    let totalInvoiceAmount = 0;
+
+    cartItems.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        totalInvoiceAmount += itemTotal;
+        invoiceDetailsElement.innerHTML += `
+            <div class="invoice-item">
+                <span>${item.name} (${item.quantity})</span>
+                <span>$${itemTotal.toFixed(2)}</span>
+            </div>
+        `;
+    });
+
+    totalInvoiceAmountElement.innerText = `$${totalInvoiceAmount.toFixed(2)}`;
+}
+
+// Download invoice functionality
+document.getElementById('download-invoice-btn').addEventListener('click', () => {
+    const invoiceText = `Invoice\n\n${cartItems.map(item => `${item.name} (${item.quantity}): $${(item.price * item.quantity).toFixed(2)}`).join('\n')}\n\nTotal: $${calculateTotalPrice().toFixed(2)}`;
+    const blob = new Blob([invoiceText], { type: 'text/plain' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'invoice.txt';
+    a.click();
+    URL.revokeObjectURL(url);
+});
+
+// Proceed to checkout functionality
+document.getElementById('proceed-checkout-btn').addEventListener('click', () => {
+    alert('Proceeding to checkout...');
+    // Transition to the checkout process here or update the modal form to proceed with checkout
+});
+
+    </script>
+</body>
+</html>
