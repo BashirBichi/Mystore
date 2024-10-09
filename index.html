@@ -13,7 +13,300 @@
 
 
 <body>
-    
+    <style>
+         /* Customize the card */
+        .product-card {
+            height: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        /* Add margin around cards */
+        .card-wrapper {
+            margin-bottom: 20px;
+        }
+
+        /* Hover effect on cards */
+        .product-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Cart badge */
+        .cart-badge {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background-color: red;
+            color: white;
+            border-radius: 50%;
+            padding: 5px 10px;
+        }
+
+        /* Header styling */
+        .header {
+            background-color: #007bff;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+
+        /* Footer styling */
+        .footer {
+            background-color: #f8f9fa;
+            padding: 20px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+       /* View Details button styling */
+.btn-primary {
+    background: linear-gradient(45deg, #28a745, #5cb85c);
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    font-size: 10px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 50px;
+}
+.btn-buy-now {
+    background: linear-gradient(45deg, #28a745, #5cb85c);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 10px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 60px;
+}
+
+.btn-primary:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Add to Cart button styling */
+.btn-custom {
+    background: linear-gradient(45deg, #ffc107, #ffca28);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    font-size: 10px;
+    border-radius: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    min-width: 60px;
+}
+
+.btn-custom:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+/* Additional shared hover effect */
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Smaller, sleek buttons for increment and decrement */
+.btn-increment, .btn-decrement {
+    background-color: #1e90ff;
+    border: none;
+    color: white;
+    padding: 6px;
+    border-radius: 50%;
+    font-size: 16px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 1.2;
+    transition: transform 0.2s ease;
+}
+
+.btn-increment:hover, .btn-decrement:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Input styling for quantity */
+.quantity-input {
+    width: 50px;
+    text-align: center;
+    padding: 5px;
+    font-size: 14px;
+    margin: 0 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.quantity-wrapper {
+    display: flex;
+    align-items: center;
+}
+
+
+
+        /* Cart icon styling */
+        .cart-icon {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 1000;
+            background-color: #007bff;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+         /* General Mobile Styles */
+@media (max-width: 767px) {
+    /* Adjust the card layout */
+    .card-wrapper {
+        margin-bottom: 10px;
+    }
+
+    /* Make cards take full width on mobile */
+    .col-6 {
+        width: 100%;
+    }
+
+    /* Adjust the padding and margin for header and footer */
+    .header {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .footer {
+        padding: 15px;
+        font-size: 14px;
+    }
+
+    /* Resize the images in the cards */
+    .card-img-top {
+        height: auto;
+        width: 100%;
+    }
+
+    /* Adjust the font sizes in card body */
+    .card-title {
+        font-size: 16px;
+    }
+
+    .card-text {
+        font-size: 14px;
+    }
+
+    /* Reduce button sizes */
+    .btn-primary,
+    .btn-custom,
+    .btn-buy-now {
+        font-size: 12px;
+        padding: 6px 12px;
+        min-width: 50px;
+    }
+
+    /* Smaller increment/decrement buttons */
+    .btn-increment,
+    .btn-decrement {
+        font-size: 12px;
+        padding: 4px;
+        width: 24px;
+        height: 24px;
+    }
+
+    /* Adjust the quantity input size */
+    .quantity-input {
+        width: 40px;
+        font-size: 12px;
+    }
+
+    /* Cart icon position for mobile */
+    .cart-icon {
+        top: 10px;
+        right: 10px;
+        padding: 8px;
+    }
+
+    /* Adjust the modal size for mobile */
+    .modal-dialog {
+        max-width: 95%;
+    }
+
+    /* Resize and align modal content */
+    #modalImage {
+        max-width: 100%;
+        height: auto;
+    }
+
+    #modalProductName {
+        font-size: 18px;
+    }
+
+    #modalProductPrice,
+    #modalProductDescription {
+        font-size: 14px;
+    }
+
+    /* Toast positioning */
+    .toast {
+        bottom: 10px;
+        right: 10px;
+    }
+}
+
+/* Tablet Portrait View */
+@media (min-width: 768px) and (max-width: 991px) {
+    .card-wrapper {
+        margin-bottom: 15px;
+    }
+
+    /* Make cards take half-width */
+    .col-6 {
+        width: 50%;
+    }
+
+    /* Adjust the padding and font size */
+    .header,
+    .footer {
+        padding: 12px;
+        font-size: 18px;
+    }
+
+    /* Resize images in cards */
+    .card-img-top {
+        width: 100%;
+        height: auto;
+    }
+
+    /* Adjust button sizes */
+    .btn-primary,
+    .btn-custom,
+    .btn-buy-now {
+        font-size: 14px;
+        padding: 8px 14px;
+    }
+
+    /* Adjust modal content for tablets */
+    .modal-dialog {
+        max-width: 90%;
+    }
+
+    #modalImage {
+        max-width: 100%;
+    }
+}
+    </style>
 
     <header class="navbar navbar-dark bg-dark">
         <div class="container">
