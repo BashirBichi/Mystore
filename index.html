@@ -280,20 +280,47 @@
                
               
                 <!-- Shopping Cart Modal (similar to the one in the previous examples) -->
-                <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
-                    <!-- ... (your existing code) -->
+<!--                 <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="cartModalLabel" aria-hidden="true">
+                    
                 </div>
-            </div>
+            </div> -->
 
         <!-- Additional Information Section -->
-        <section class="mt-4" id="about-us">
+<!--         <section class="mt-4" id="about-us">
             <h2 class="mb-4">About Us</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. ...</p>
         </section>
 
+    </div> -->
+         <!-- Product Modal -->
+    <div class="modal fade" id="productModal" tabindex="-1" aria-labelledby="productModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="productModalLabel">Product Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <img src="" alt="Product Image" id="modalImage">
+                    <h5 id="modalProductName"></h5>
+                    <p id="modalProductPrice"></p>
+                    <p id="modalProductDescription"></p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Shopping Cart Modal (similar to the one in the previous examples) -->
+    <!-- Toast Notification -->
+    <div class="toast" id="cart-toast" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="toast-body">
+            <span id="toast-message"></span>
+        </div>
+    </div>
+
+    
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js"></script>
