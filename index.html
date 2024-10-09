@@ -113,73 +113,145 @@
 
     <div class="container mt-4">
 
-        <!-- Featured Items Section -->
-        <section class="container" id="Featured-items-section">
-            <h2 class="mb-4 text-center">Featured Items</h2>
-            <div class="row">
-                <!-- Sample item card-->
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./images/istockphoto-1392429449-612x612.jpg" class="card-img-top" alt="Product 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <p class="card-text">$20.00</p>
-                             <button class="btn btn-primary" onclick="addToCart(1)" >Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./images/istockphoto-1152807712-612x612.jpg   " class="card-img-top" alt="Product 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <p class="card-text">$20.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
-                        </div>
-                    </div>
-                </div><div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./images/istockphoto-1165916637-612x612.jpg" class="card-img-top" alt="Product 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <p class="card-text">$20.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./images/istockphoto-1740351197-612x612.jpg" class="card-img-top" alt="Product 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <p class="card-text">$20.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./images/istockphoto-946105916-612x612.jpg" class="card-img-top" alt="Product 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <p class="card-text">$20.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4 mb-4">
-                    <div class="card">
-                        <img src="./images/istockphoto-1213068121-612x612.jpg" class="card-img-top" alt="Product 1">
-                        <div class="card-body">
-                            <h5 class="card-title">Product 1</h5>
-                            <p class="card-text">$20.00</p>
-                            <button class="btn btn-primary">Add to Cart</button>
-                        </div>
-                    </div>
-                </div>
+       <!-- Main Content -->
+    <div class="container mt-5">
+        <h2 class="text-center mb-4">Agricultural & Commodity Products</h2>
 
+        <div class="row">
+            <!-- Card 1: Organic Rice -->
+            <div class="col-6 col-lg-3 card-wrapper">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Organic Rice">
+                    <div class="card-body">
+                        <h5 class="card-title">Organic Rice</h5>
+                        <p class="card-text">$50.00 per bag</p>
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Organic Rice" data-price="50.00" data-description="High-quality organic rice.">View Details</button>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                                                    <!-- Quantity Increment/Decrement -->
+                                <div class="quantity-wrapper">
+                                <button class="btn btn-decrement">-</button>
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-increment">+</button>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Organic Rice" data-price="50.00">Add to Cart</button>
+                            <button class="btn btn-buy-now" data-product="Organic Rice">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </section>
+
+            <!-- Card 2: Cocoa Beans -->
+            <div class="col-6 col-lg-3 card-wrapper">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Cocoa Beans">
+                    <div class="card-body">
+                        <h5 class="card-title">Cocoa Beans</h5>
+                        <p class="card-text">$70.00 per bag</p>
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Cocoa Beans" data-price="70.00" data-description="Premium quality cocoa beans.">View Details</button>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                             <!-- Quantity Increment/Decrement -->
+                             <div class="quantity-wrapper">
+                                <button class="btn btn-decrement">-</button>
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-increment">+</button>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Cocoa Beans" data-price="70.00">Add to Cart</button>
+                            <button class="btn btn-buy-now" data-product="Cocoa Beans">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Maize -->
+            <div class="col-6 col-lg-3 card-wrapper">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Maize">
+                    <div class="card-body">
+                        <h5 class="card-title">Maize</h5>
+                        <p class="card-text">$40.00 per bag</p>
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Maize" data-price="40.00" data-description="Freshly harvested maize.">View Details</button>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                             <!-- Quantity Increment/Decrement -->
+                             <div class="quantity-wrapper">
+                                <button class="btn btn-decrement">-</button>
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-increment">+</button>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Maize" data-price="40.00">Add to Cart</button>
+                            <button class="btn btn-buy-now" data-product="Maize">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Coffee Beans -->
+            <div class="col-6 col-lg-3 card-wrapper">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Coffee Beans">
+                    <div class="card-body">
+                        <h5 class="card-title">Coffee Beans</h5>
+                        <p class="card-text">$80.00 per bag</p>
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Coffee Beans" data-price="80.00" data-description="Rich aromatic coffee beans.">View Details</button>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                             <!-- Quantity Increment/Decrement -->
+                             <div class="quantity-wrapper">
+                                <button class="btn btn-decrement">-</button>
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-increment">+</button>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Coffee Beans" data-price="80.00">Add to Cart</button>
+                            <button class="btn btn-buy-now" data-product="Coffee Beans">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 5: Soybeans -->
+            <div class="col-6 col-lg-3 card-wrapper">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Soybeans">
+                    <div class="card-body">
+                        <h5 class="card-title">Soybeans</h5>
+                        <p class="card-text">$60.00 per bag</p>
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Soybeans" data-price="60.00" data-description="High protein soybeans.">View Details</button>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                             <!-- Quantity Increment/Decrement -->
+                             <div class="quantity-wrapper">
+                                <button class="btn btn-decrement">-</button>
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-increment">+</button>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Soybeans" data-price="60.00">Add to Cart</button>
+                            <button class="btn btn-buy-now" data-product="Soybeans">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 6: Palm Oil -->
+            <div class="col-6 col-lg-3 card-wrapper">
+                <div class="card product-card">
+                    <img src="https://via.placeholder.com/150" class="card-img-top" alt="Palm Oil">
+                    <div class="card-body">
+                        <h5 class="card-title">Palm Oil</h5>
+                        <p class="card-text">$90.00 per barrel</p>
+                        <button class="btn btn-primary view-details" data-bs-toggle="modal" data-bs-target="#productModal" data-product="Palm Oil" data-price="90.00" data-description="Premium palm oil.">View Details</button>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                             <!-- Quantity Increment/Decrement -->
+                             <div class="quantity-wrapper">
+                                <button class="btn btn-decrement">-</button>
+                                <input type="number" class="form-control quantity-input" value="1" min="1">
+                                <button class="btn btn-increment">+</button>
+                            </div>
+                            <button class="btn btn-custom add-to-cart" data-product="Palm Oil" data-price="90.00">Add to Cart</button>
+                            <button class="btn btn-buy-now" data-product="Palm Oil">Buy Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
         <!-- Carousel Section -->
         <section class="mt-4" id="Carousel-section">
