@@ -388,18 +388,15 @@ button:hover {
             <h1 class="display-4">Welcome to My Store</h1>
             <p class="lead">Discover our latest products and find great deals.</p>
         </div>
-<!--         <div class="container">
-            <button id="voiceCommandBtn" class="btn btn-primary" onclick="startVoiceRecognition()">
-                <i class="bi bi-mic"></i> Voice Command
-            </button>
-        </div> -->
+<!-- Cart Icon and Badge -->
+    <div class="cart-icon position-fixed">
+        <a href="cart.html" id="cart-link" class="text-white position-relative">
+            <i class="bi bi-cart-fill fs-2"></i>
+            <span id="cart-counter" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                0
+            </span>
+        </a>
     </div>
-<!-- 
-    <div id="loader">
-     
-        <i class="bi bi-cart4 cart-icon"></i>
-    </div> -->
-
 
 
 
@@ -732,5 +729,192 @@ window.addEventListener('load', function() {
             </div>
         </div>
     </div>
+     <script>
+         <!-- JavaScript for enhanced functionality -->
+    <script>
+        // Cart Management and Toast Functionality
+        let cartItems = JSON.parse(localStorage.getItem('cart')) || [];
+
+        // Update Cart Counter
+        function updateCartCounter() {
+            document.getElementById('cart-counter').textContent = cartItems.length;
+        }
+
+        // Add to Cart
+        document.querySelectorAll('.add-to-cart').forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productName = event.target.getAttribute('data-product');
+                const productPrice = parseFloat(event.target.getAttribute('data-price'));
+                const quantityInput = event.target.closest('.card-body').querySelector('.quantity-input');
+                const quantity = parseInt(quantityInput.value);
+
+                // Add product to cart
+                let existingProduct = cartItems.find(item => item.name === productName);
+                if (existingProduct) {
+                    existingProduct.quantity += quantity;
+                } else {
+                    cartItems.push({ name: productName, price: productPrice, quantity: quantity });
+                }
+
+                // Save cart to localStorage
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+
+                // Update counter
+                updateCartCounter();
+
+                // Show Toast
+                showToast(`${quantity} x ${productName} added to your cart.`);
+            });
+        });
+
+        // Buy Now: Redirect to Checkout
+        document.querySelectorAll('.btn-buy-now').forEach(button => {
+            button.addEventListener('click', (event) => {
+                // Add item to cart (if not already there)
+                const productName = event.target.getAttribute('data-product');
+                let existingProduct = cartItems.find(item => item.name === productName);
+                if (!existingProduct) {
+                    cartItems.push({ name: productName, price: 50.00, quantity: 1 });
+                    localStorage.setItem('cart', JSON.stringify(cartItems));
+                }
+
+                // Redirect to checkout page
+                window.location.href = 'checkout.html';
+            });
+        });
+
+        // Toast
+        function showToast(message) {
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+
+            const toastElement = document.getElementById('cart-toast');
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+
+        // Update the cart counter on page load
+        updateCartCounter();
+    </script>
+    <script>
+        // Handle Buy Now button functionality
+        const buyNowButtons = document.querySelectorAll('.buy-now');
+        buyNowButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productName = event.target.getAttribute('data-product');
+                const productPrice = parseFloat(event.target.getAttribute('data-price'));
+                const quantityInput = event.target.closest('.card-body').querySelector('.quantity-input');
+                const quantity = parseInt(quantityInput.value);
+    
+                // Create cart object for direct checkout
+                let cartForCheckout = [{
+                    name: productName,
+                    price: productPrice,
+                    quantity: quantity
+                }];
+    
+                // Store the product to localStorage for checkout process
+                localStorage.setItem('checkoutCart', JSON.stringify(cartForCheckout));
+    
+                // Redirect to checkout page
+                window.location.href = 'checkout.html';
+            });
+        });
+    
+        // Initial cart counter update
+        updateCartCounter();
+    
+        // Add to Cart functionality (continued)
+        const addToCartButtons = document.querySelectorAll('.add-to-cart');
+        addToCartButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productName = event.target.getAttribute('data-product');
+                const productPrice = parseFloat(event.target.getAttribute('data-price'));
+                const quantityInput = event.target.closest('.card-body').querySelector('.quantity-input');
+                const quantity = parseInt(quantityInput.value);
+    
+                // Check if the item already exists in the cart
+                let existingProduct = cartItems.find(item => item.name === productName);
+                if (existingProduct) {
+                    existingProduct.quantity += quantity;
+                } else {
+                    cartItems.push({
+                        name: productName,
+                        price: productPrice,
+                        quantity: quantity
+                    });
+                }
+    
+                // Update cart in localStorage
+                localStorage.setItem('cart', JSON.stringify(cartItems));
+    
+                // Update cart counter
+                updateCartCounter();
+    
+                // Show a toast notification
+                showToast(`${quantity} x ${productName} added to your cart.`);
+            });
+        });
+    
+        // Function to show Bootstrap toast
+        function showToast(message) {
+            const toastMessage = document.getElementById('toast-message');
+            toastMessage.textContent = message;
+    
+            const toastElement = document.getElementById('cart-toast');
+            const toast = new bootstrap.Toast(toastElement);
+            toast.show();
+        }
+    
+        // Product Modal Functionality
+        const viewDetailButtons = document.querySelectorAll('.view-details');
+        viewDetailButtons.forEach(button => {
+            button.addEventListener('click', (event) => {
+                const productName = event.target.getAttribute('data-product');
+                const productPrice = event.target.getAttribute('data-price');
+                const productDescription = event.target.getAttribute('data-description');
+                const productImage = event.target.closest('.card').querySelector('.card-img-top').getAttribute('src');
+    
+                // Populate modal with product details
+                document.getElementById('modalProductName').textContent = productName;
+                document.getElementById('modalProductPrice').textContent = `$${productPrice}`;
+                document.getElementById('modalProductDescription').textContent = productDescription;
+                document.getElementById('modalImage').setAttribute('src', productImage);
+            });
+        });
+    
+        // Initialize Bootstrap tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+        
+        // Add subtle click animation
+document.querySelectorAll('.btn-custom').forEach(button => {
+    button.addEventListener('click', function() {
+        button.style.transform = 'scale(0.95)';
+        setTimeout(() => button.style.transform = 'scale(1)', 150);
+    });
+});
+
+// Increment/Decrement functionality
+document.querySelectorAll('.btn-increment').forEach(button => {
+    button.addEventListener('click', function() {
+        let quantityInput = this.previousElementSibling;
+        quantityInput.value = parseInt(quantityInput.value) + 1;
+    });
+});
+
+document.querySelectorAll('.btn-decrement').forEach(button => {
+    button.addEventListener('click', function() {
+        let quantityInput = this.nextElementSibling;
+        if (parseInt(quantityInput.value) > 1) {
+            quantityInput.value = parseInt(quantityInput.value) - 1;
+        }
+    });
+});
+
+
+     </script>
 </footer>
 </html>
